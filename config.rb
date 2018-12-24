@@ -8,27 +8,27 @@ require_relative "transaction"
 
 class Project
 
-  def new_product(name, price)
-    # TODO
+  def self.new_product(name, price)
     Product.new(name, price)
   end
 
-  def buy_product(prod_name, amount, total_paid)
-    # TODO
+  def self.buy_product(prod_name, amount, total_paid)
     Transaction.new(search_product_by_name(prod_name), amount, total_paid)
   end
 
-  def sell_product(prod_name, amount, total_price)
-    # TODO
+  def self.sell_product(prod_name, amount, total_price)
     Transaction.new(search_product_by_name(prod_name), amount, total_paid)
   end
 
-  def search_product_by_name(name)
+  private
+
+  def self.search_product_by_name(name)
     x = nil
     Product.products.each do |p|
       if p.name == name
         x = p
       end
     end
+    return x
   end
 end
