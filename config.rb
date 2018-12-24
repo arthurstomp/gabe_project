@@ -8,6 +8,10 @@ require_relative "transaction"
 
 class Project
 
+  def self.stock(prod_name)
+    Transaction.stock(prod_name)
+  end
+
   def self.new_product(name, price)
     Product.new(name, price)
   end
