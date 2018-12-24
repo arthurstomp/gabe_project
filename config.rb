@@ -22,7 +22,7 @@ class Project
 
   def self.sell_product(prod_name, amount, total_price)
     # TODO
-    Transaction.new(search_product_by_name(prod_name), amount, total_paid)
+    Transaction.new(search_product_by_name(prod_name), amount, total_price)
   end
 
   def self.list_transactions
