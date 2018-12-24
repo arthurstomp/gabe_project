@@ -8,9 +8,9 @@ class Product
     @@products
   end
 
-  def initialize(name, preco)
+  def initialize(name, price)
     @name = name
-    @preco = preco 
+    @preco = price
     @@products.push(self)
   end
 end
