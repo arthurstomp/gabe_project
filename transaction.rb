@@ -13,6 +13,15 @@ class Transaction
     @@transactions.push(self)
   end
 
+  def stock(prod_name)
+    stock = 0
+    Transaction.transactions.each do |s|
+      if s.name == prod_name
+        stock += s.amount
+      end
+    end
+  end
+
   private
 
   class NotAProductError < StandardError; end
@@ -21,4 +30,5 @@ class Transaction
     raise NotAProductError unless product.is_a? Product
     @product = product
   end
+
 end
