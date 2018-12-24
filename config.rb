@@ -5,6 +5,8 @@ require_relative "transaction"
 # Add product type;
 # Buy more of the product;
 # Sell the product;
+# Get profit of all;
+# Get profit by product;
 
 class Project
 
