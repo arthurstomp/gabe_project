@@ -9,12 +9,10 @@ require_relative "transaction"
 class Project
 
   def self.new_product(name, price)
-    # TODO
     Product.new(name, price)
   end
 
   def self.buy_product(prod_name, amount, total_paid)
-    # TODO
     Transaction.new(search_product_by_name(prod_name), amount, total_paid)
   end
 
@@ -38,5 +36,6 @@ class Project
         x = p
       end
     end
+    return x
   end
 end
