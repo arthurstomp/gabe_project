@@ -13,13 +13,14 @@ class Transaction
     @@transactions.push(self)
   end
 
-  def stock(prod_name)
+  def self.stock(prod_name)
     stock = 0
     Transaction.transactions.each do |s|
       if s.name == prod_name
         stock += s.amount
       end
     end
+    return stock
   end
 
   private
