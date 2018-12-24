@@ -15,9 +15,11 @@ class Transaction
 
   def self.stock(prod_name)
     stock = 0
-    Product.products.each do |s|
-      if s.name == prod_name
-        stock += s.amount
+    Product.products.each do |p|
+      Transaction.transactions.each do |t|
+        if p.name == prod_name
+          stock += t.amount
+        end
       end
     end
     return stock
