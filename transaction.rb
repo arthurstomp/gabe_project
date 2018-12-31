@@ -1,6 +1,4 @@
-require "json"
 class Transaction
-  FilePath = "./transactions.json"
   attr_reader :product, :amount, :price
   @@transactions = []
 
@@ -13,42 +11,11 @@ class Transaction
     set_product(product)
     @amount = amount
     @price = price
-    # @@transactions.push(self)
+    @@transactions.push(self)
   end
-
-  def self.add(t)
-    @@transactions.push(t)
-  end
-
-  def self._prepare_transactions
-    JSON.parse(File.read(FilePath)).map do |t|
-      h = JSON.parse(t)
-      p = Product.products.select {|prod| prod.name == h["product"]}
-      new p.first, h["amount"], h["price"]
-    end
-  end
-
-  @@transactions = _prepare_transactions
 
   def self.transactions
     @@transactions
-  end
-
-  def self.save
-    hashed_transactions = @@transactions.map do |t|
-      JSON.generate(t.hashed_attrs)
-    end
-    File.open(FilePath, 'w') do |f|
-      f.write hashed_transactions
-    end
-  end
-
-  def hashed_attrs
-    {
-      product: @product.name,
-      amount: @amount,
-      price: @price
-    }
   end
 
   def self.stock(prod_name)
