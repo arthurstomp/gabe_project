@@ -18,17 +18,17 @@ class Transaction
     @@transactions
   end
 
-  def self.stock(prod_name)
-    stock = 0
-    Product.products.each do |p|
-      Transaction.transactions.each do |t|
-        if p.name == prod_name
-          stock += t.amount
-        end
+def self.stock(prod_name)
+  stock = 0
+  Product.products.each do |p|
+    Transaction.transactions.each do |t|
+      if prod_name == p.name
+        stock += t.amount
       end
     end
-    return stock
   end
+  return stock
+end
 
   private
 

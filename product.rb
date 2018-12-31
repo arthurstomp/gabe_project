@@ -1,8 +1,9 @@
+require_relative "transaction"
 class Product
   # NOTE: Keep it until file storage
   @@products = []
 
-  attr_accessor :name
+  attr_accessor :name, :stock
 
   def initialize(name, price)
     @name = name

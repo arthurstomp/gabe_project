@@ -33,6 +33,12 @@ class Project
     end
   end
 
+def self.list_products
+  Product.products.each do |p|
+    puts p
+  end
+end
+
   private
 
   def self.search_product_by_name(name)
