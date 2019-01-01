@@ -3,7 +3,7 @@ class Product
   # NOTE: Keep it until file storage
   @@products = []
 
-  attr_accessor :name, :stock
+  attr_accessor :name, :price, :stock
 
   def initialize(name, price)
     @name = name

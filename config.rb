@@ -18,26 +18,29 @@ class Project
     Product.new(name, price)
   end
 
-  def self.buy_product(prod_name, amount, total_paid)
-    Transaction.new(search_product_by_name(prod_name), amount, total_paid)
-    Transaction.update_stock(prod_name)
+  def self.buy_product(prod_name, quant, total_paid)
+    Transaction.new(search_product_by_name(prod_name), quant, total_paid)
   end
 
-  def self.sell_product(prod_name, amount, total_price)
+  def self.sell_product(prod_name, quant, total_price)
     # TODO
-    Transaction.new(search_product_by_name(prod_name), amount, total_price)
-    Transaction.update_stock(prod_name)
+    Transaction.new(search_product_by_name(prod_name), quant, total_price)
   end
 
   def self.list_transactions
     Transaction.transactions.each do |t|
-      puts t
+      puts "product name: " + t.product.name
+      puts "amount: " + t.amount.to_s
+      puts "total price: " + t.price.to_s
     end
   end
 
 def self.list_products
   Product.products.each do |p|
-    puts p
+    puts "name: " + p.name
+    puts "price: " + p.price.to_s
+    puts "stock: " + p.stock.to_s
+    puts "\n"
   end
 end
 

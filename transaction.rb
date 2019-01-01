@@ -8,28 +8,27 @@ class Transaction
       @product = product
     end
 
+    # UPDATES STOCK AND RETURNS IF FOR DOUBLE VERIFICATION
+    def update_stock
+      x = Transaction.transactions.last
+      Product.products.each do |p|
+        if p == x.product
+          p.stock += x.amount
+        end
+      end
+    end
+
   def initialize(product, amount, price)
     set_product(product)
     @amount = amount
     @price = price
     @@transactions.push(self)
+    update_stock
   end
 
   def self.transactions
     @@transactions
   end
-
-# UPDATES STOCK AND RETURNS IF FOR DOUBLE VERIFICATION
-def self.update_stock(prod_name)
-  Product.products.each do |p|
-    Transaction.transactions.each do |t|
-      if prod_name == p.name
-        p.stock += t.amount
-        return p.stock
-      end
-    end
-  end
-end
 
 def self.view_stock(prod_name)
   x = nil
