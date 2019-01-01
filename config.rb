@@ -10,8 +10,8 @@ require_relative "transaction"
 
 class Project
 
-  def self.stock(prod_name)
-    Transaction.stock(prod_name)
+  def self.view_stock(prod_name)
+    Transaction.view_stock(prod_name)
   end
 
   def self.new_product(name, price)
@@ -20,11 +20,13 @@ class Project
 
   def self.buy_product(prod_name, amount, total_paid)
     Transaction.new(search_product_by_name(prod_name), amount, total_paid)
+    Transaction.update_stock(prod_name)
   end
 
   def self.sell_product(prod_name, amount, total_price)
     # TODO
     Transaction.new(search_product_by_name(prod_name), amount, total_price)
+    Transaction.update_stock(prod_name)
   end
 
   def self.list_transactions

@@ -8,6 +8,7 @@ class Product
   def initialize(name, price)
     @name = name
     @price = price
+    @stock = 0
     @@products.push(self)
   end
 
