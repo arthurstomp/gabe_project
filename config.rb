@@ -22,9 +22,15 @@ class Project
     Transaction.new(search_product_by_name(prod_name), quant, total_paid)
   end
 
-  def self.sell_product(prod_name, quant, total_price)
-    # TODO
-    Transaction.new(search_product_by_name(prod_name), quant, total_price)
+  def self.sell_product(prod_name, quant)
+    # TODO\
+    product = search_product_by_name(prod_name)
+    if product.stock >= quant
+      total_price = product.price * quant
+      Transaction.new(product, quant * -1, total_price)
+    else
+    puts "You don't have enough stock to sell."
+    end
   end
 
   def self.list_transactions
@@ -32,6 +38,7 @@ class Project
       puts "product name: " + t.product.name
       puts "amount: " + t.amount.to_s
       puts "total price: " + t.price.to_s
+      puts "\n"
     end
   end
 

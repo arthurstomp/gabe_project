@@ -8,7 +8,7 @@ class Transaction
       @product = product
     end
 
-    # UPDATES STOCK AND RETURNS IF FOR DOUBLE VERIFICATION
+    # UPDATES STOCK
     def update_stock
       x = Transaction.transactions.last
       Product.products.each do |p|
